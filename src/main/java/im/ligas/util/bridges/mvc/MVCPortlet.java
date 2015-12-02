@@ -87,16 +87,16 @@ public class MVCPortlet extends com.liferay.util.bridges.mvc.MVCPortlet {
 	}
 
 	protected boolean callResourceMethod(
-		ResourceRequest renderRequest, ResourceResponse renderResponse)
+		ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 		throws PortletException {
 
-		String resourceName = renderRequest.getResourceID();
+		String resourceName = resourceRequest.getResourceID();
 
 		try {
 			Method method = getMethods(Phase.RESOURCE, resourceName,
 				ResourceRequest.class, ResourceResponse.class);
 
-			method.invoke(this, renderRequest, renderResponse);
+			method.invoke(this, resourceRequest, resourceResponse);
 			return true;
 
 		} catch (NoSuchMethodException nsme) {
